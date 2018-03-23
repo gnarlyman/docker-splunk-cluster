@@ -24,7 +24,7 @@ def main():
     if sys.argv[1] == "--configure":
         configure()
     elif sys.argv[1] == "--wait-splunk":
-        wait_splunk(sys.argv[2], sys.argv[3:])
+        wait_splunk(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5:])
     elif sys.argv[1] == "--add-licenses":
         add_licenses(sys.argv[2])
     elif sys.argv[1] == "--shc-autobootstrap":
@@ -91,14 +91,14 @@ def __get_conf_folder_full(conf_folder, parent):
         return os.path.join(os.environ["SPLUNK_HOME"], conf_folder)
 
 
-def wait_splunk(uri, roles):
+def wait_splunk(username, password, uri, roles):
     """
     Wait 5 minutes for dependency
     """
     for x in xrange(1, 300):
         try:
             # This url does not require authentication, ignore certificate
-            response = requests.get(uri + "/services/server/info?output_mode=json", verify=False)
+            response = requests.get(uri + "/services/server/info?output_mode=json", verify=False, auth=(username, password))
             if response.status_code == 200:
                 server_roles = response.json()["entry"][0]["content"]["server_roles"]
                 if not roles or all(any(re.match(role, server_role) for server_role in server_roles) for role in roles):
@@ -106,7 +106,7 @@ def wait_splunk(uri, roles):
                 else:
                     print "Waiting for " + ", ".join(roles) + " in " + uri + " got " + ", ".join(server_roles) + "."
             else:
-                print "Waiting for "+ ", ".join(roles) + " in " + uri + "."
+                print "Waiting for "+ ", ".join(roles) + " in " + uri + " got " + str(response.status_code) + "."
         except requests.exceptions.RequestException as exception:
             print "Waiting for " + ", ".join(roles) + " in " + uri + ". Exception: " + str(exception)
         time.sleep(1)

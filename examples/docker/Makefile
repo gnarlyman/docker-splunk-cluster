@@ -1,6 +1,6 @@
 # With license master
 
-export SPLUNK_CLUSTER_VERSION ?= 6.4.3
+export SPLUNK_CLUSTER_VERSION ?= 6.6.3
 export SPLUNK_CLUSTER_DOCKER_IMAGE_PATH ?= ${USER}
 
 clean-lm:

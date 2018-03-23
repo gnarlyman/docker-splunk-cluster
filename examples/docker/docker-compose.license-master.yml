@@ -3,40 +3,40 @@ services:
 
   cluster-master:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_3=cmd python /opt/splunk/bin/splunk_setup.py --add-licenses /opt/"
+      - "SPLUNK_BEFORE_START_CMD_6=cmd python /opt/splunk/bin/splunk_setup.py --add-licenses /opt/"
       - "CONF__server__general__pass4SymmKey=general-changeme"
 
   shc-member-01:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk 'https://cluster-master:8089' cluster_master kv_store license_master"
+      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk admin changed 'https://cluster-master:8089' cluster_master kv_store license_master"
       - "CONF__server__general__pass4SymmKey=general-changeme"
       - "CONF__server__license__master_uri=https://cluster-master:8089"
 
   shc-member-02:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk 'https://cluster-master:8089' cluster_master kv_store license_master"
+      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk admin changed 'https://cluster-master:8089' cluster_master kv_store license_master"
       - "CONF__server__general__pass4SymmKey=general-changeme"
       - "CONF__server__license__master_uri=https://cluster-master:8089"
 
   shc-member-03:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk 'https://cluster-master:8089' cluster_master kv_store license_master"
+      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk admin changed 'https://cluster-master:8089' cluster_master kv_store license_master"
       - "CONF__server__general__pass4SymmKey=general-changeme"
       - "CONF__server__license__master_uri=https://cluster-master:8089"
 
   cluster-slave-01:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk 'https://cluster-master:8089' cluster_master license_master"
+      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk admin changed 'https://cluster-master:8089' cluster_master license_master"
       - "CONF__server__general__pass4SymmKey=general-changeme"
       - "CONF__server__license__master_uri=https://cluster-master:8089"
 
   cluster-slave-02:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk 'https://cluster-master:8089' cluster_master license_master"
+      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk admin changed 'https://cluster-master:8089' cluster_master license_master"
       - "CONF__server__general__pass4SymmKey=general-changeme"
       - "CONF__server__license__master_uri=https://cluster-master:8089"
   cluster-slave-03:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk 'https://cluster-master:8089' cluster_master license_master"
+      - "SPLUNK_BEFORE_START_CMD_2=cmd python /opt/splunk/bin/splunk_setup.py --wait-splunk admin changed 'https://cluster-master:8089' cluster_master license_master"
       - "CONF__server__general__pass4SymmKey=general-changeme"
       - "CONF__server__license__master_uri=https://cluster-master:8089"
