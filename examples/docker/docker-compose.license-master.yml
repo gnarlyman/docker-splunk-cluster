@@ -3,7 +3,7 @@ services:
 
   cluster-master:
     environment: 
-      - "SPLUNK_BEFORE_START_CMD_6=cmd python /opt/splunk/bin/splunk_setup.py --add-licenses /opt/"
+      - "SPLUNK_BEFORE_START_CMD_5=cmd python /opt/splunk/bin/splunk_setup.py --add-licenses /opt/"
       - "CONF__server__general__pass4SymmKey=general-changeme"
 
   shc-member-01:

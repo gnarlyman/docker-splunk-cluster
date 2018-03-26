@@ -124,7 +124,7 @@ def add_licenses(folder):
                     args = [
                         "add",
                         "licenses",
-                        "-auth", "admin:changeme",
+                        "-auth", "admin:changed",
                         license
                     ]
                     __splunk_execute(args)
