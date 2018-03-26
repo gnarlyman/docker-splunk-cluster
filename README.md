@@ -68,8 +68,12 @@ This script supports several commands:
 
 ### Pre-requirement
 
-You need to have a base Splunk image, you can use [outcoldman/splunk](https://github.com/outcoldman/docker-splunk)
-as base image. Build it and tag it as `splunk:latest` on the machine where you will build this image.
+~~You need to have a base Splunk image, you can use [outcoldman/splunk](https://github.com/outcoldman/docker-splunk)
+as base image. Build it and tag it as `splunk:latest` on the machine where you will build this image.~~
+
+The base Splunk image is now the official Splunk dockerhub image: 
+- splunk/splunk:6.6.3 (by default)
+- change in `splunk-cluster/Dockerfile`
 
 ### Deploy
 
